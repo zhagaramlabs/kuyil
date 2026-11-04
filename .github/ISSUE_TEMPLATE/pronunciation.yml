@@ -1,0 +1,34 @@
+name: Wrong pronunciation
+description: Kuyil says a word or sentence wrongly
+title: "Pronunciation: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Tamil, Tanglish or English are all fine. Please don't include anyone's personal details, or a recording of anyone who hasn't agreed to share it. Security problems go to SECURITY.md, not here.
+  - type: textarea
+    id: text
+    attributes:
+      label: The text
+      description: Exactly what you gave Kuyil.
+    validations:
+      required: true
+  - type: textarea
+    id: said
+    attributes:
+      label: What it said
+      description: Write it in Tamil script, or attach the audio it made.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What it should say
+      description: How a native speaker says it, and which part is wrong if it's a long sentence.
+    validations:
+      required: true
+  - type: input
+    id: model
+    attributes:
+      label: Model and voice
+      placeholder: e.g. kuyil-1.4m, female voice

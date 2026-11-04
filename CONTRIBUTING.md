@@ -2,6 +2,8 @@
 
 Thank you for helping Tamil speak. Issues and pull requests are welcome, in Tamil or English.
 
+Everyone here follows our [Code of Conduct](CODE_OF_CONDUCT.md). Report security problems privately, as in [SECURITY.md](SECURITY.md), not in a public issue.
+
 ## Ways to help
 
 - **Listen.** Native listeners are what decides between models. Rate the files a release asks about,

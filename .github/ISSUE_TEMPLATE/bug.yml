@@ -1,0 +1,28 @@
+name: Something broke
+description: An error, a crash, or a command that doesn't do what the README says
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Tamil, Tanglish or English are all fine. Please don't include anyone's personal details, or a recording of anyone who hasn't agreed to share it. Security problems go to SECURITY.md, not here.
+  - type: textarea
+    id: command
+    attributes:
+      label: What you ran
+      description: The command, and the text if it's about speech.
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: happened
+    attributes:
+      label: What happened
+      description: The error message or output, and what you expected instead.
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Your setup
+      placeholder: e.g. macOS 15 on M2, Python 3.12, kuyil at commit abc1234
