@@ -1,0 +1,23 @@
+[project]
+name = "kuyil"
+version = "0.1.0"
+description = "A tiny Tamil and Tanglish text-to-speech model on PiVo's recipe"
+readme = "README.md"
+license = "Apache-2.0"
+requires-python = ">=3.10"
+dependencies = [
+    "torch>=2.1",
+    "numpy",
+    "scipy",
+    "soundfile",
+    "onnxruntime",  # PiVo's vocoder
+    "pyarrow",  # IndicTTS parquet
+    "cmudict",  # English words in Latin script
+    "uraikal>=0.1,<0.2",  # Tamil number reading
+]
+
+[dependency-groups]
+dev = ["pytest"]
+
+[tool.uv]
+package = false  # scripts run from the repo root
