@@ -111,6 +111,19 @@ The second form speaks the 125 held-out sentences and writes speech-recognition 
 the synthesized and the original audio. Run them through oosai's `eval/run_asr.py`: the gap between
 the two error rates is the test. Native listeners then pick a size.
 
+Results (2026-11-04, IndicConformer-600M on the 125 held-out sentences; character error rate, mean of 3 seeds):
+
+| Audio | Character error | Word error |
+|---|---|---|
+| Original recordings | 2.9% | 19.2% |
+| Kuyil 1.4M | 3.0% | 18.1% |
+| Kuyil 5M | 3.0% | 18.2% |
+| Kuyil 20M | 2.9% | 18.2% |
+
+Every size is as intelligible as the recordings, so the recognizer can't pick a size; listeners will.
+Synthesis runs at a real-time factor of 0.06–0.07 on one Mac CPU thread at every size, since the vocoder
+dominates. 20M reaches its best validation loss by epoch 21 and then overfits 26 h of speech.
+
 ## What's not done
 
 - PiVo's 1,200-update adversarial refinement.
