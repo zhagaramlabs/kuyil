@@ -1,6 +1,6 @@
 """Speak text with a trained Kuyil checkpoint through PiVo's FARGAN vocoder.
 
-    python synth.py CKPT "வணக்கம், நான் குயில்." --voice female --out hello.wav
+    python synth.py CKPT "வணக்கம், நான் குயில்." --voice female --out hello.wav   (CKPT: a .pt or a released folder)
     python synth.py CKPT --test data/indictts --out data/eval/<run>
 
 The second form speaks every held-out test sentence in its own voice and writes run_asr.py manifests
@@ -25,9 +25,15 @@ PIVO = Path(__file__).resolve().parent / "models/pivo-1.4m"
 
 
 def load(checkpoint, pivo=PIVO):
-    """-> speak(text, voice) returning 16 kHz float audio, and the voice names."""
+    """A training checkpoint (.pt) or a released model folder -> speak(text, voice) returning 16 kHz float
+    audio, and the voice names. A released folder (release.py) carries its own copy of PiVo's vocoder."""
     torch.set_num_threads(1)
-    ck = torch.load(checkpoint, map_location="cpu", weights_only=False)
+    if Path(checkpoint).is_dir():
+        from safetensors.torch import load_file
+        ck = json.loads((Path(checkpoint) / "config.json").read_text())
+        ck["state_dict"], pivo = load_file(Path(checkpoint) / "model.safetensors"), Path(checkpoint) / "pivo"
+    else:
+        ck = torch.load(checkpoint, map_location="cpu", weights_only=False)
     model = Kuyil(Config(**ck["config"]))
     model.load_state_dict(ck["state_dict"])
     opts = ort.SessionOptions(); opts.intra_op_num_threads = 1

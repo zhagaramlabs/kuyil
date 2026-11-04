@@ -14,6 +14,7 @@ dependencies = [
     "pyarrow",  # IndicTTS parquet
     "cmudict",  # English words in Latin script
     "uraikal>=0.1,<0.2",  # Tamil number reading
+    "safetensors>=0.8.0",
 ]
 
 [dependency-groups]

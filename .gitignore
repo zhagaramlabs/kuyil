@@ -6,3 +6,4 @@ models/
 results/
 runs/
 *.wav
+release/
