@@ -11,7 +11,15 @@ reads numbers with) and [oosai](https://github.com/zhagaramlabs/oosai) (the voic
 
 **Status (2026-11-04):** steps 0–2 are built. The first size ladder (3 sizes × 3 seeds) is trained on
 IndicTTS Tamil and scored: every size is as intelligible as the original recordings ([results](#step-3-listening-and-scoring)).
-Native listeners pick a size next. No trained voice is released yet; see [What's not done](#whats-not-done).
+All three sizes are released on Hugging Face under CC BY 4.0:
+[kuyil-1.4m](https://huggingface.co/zhagaramlabs/kuyil-1.4m) ·
+[kuyil-5m](https://huggingface.co/zhagaramlabs/kuyil-5m) ·
+[kuyil-20m](https://huggingface.co/zhagaramlabs/kuyil-20m). Native listeners pick the default size next.
+
+```bash
+hf download zhagaramlabs/kuyil-1.4m --local-dir kuyil-1.4m
+uv run python synth.py kuyil-1.4m "வணக்கம், நான் குயில்." --voice female --out hello.wav
+```
 
 ## Set up
 
@@ -128,12 +136,16 @@ dominates. 20M reaches its best validation loss by epoch 21 and then overfits 26
 ## What's not done
 
 - PiVo's 1,200-update adversarial refinement.
-- A release: the trained voices come from IndicTTS, whose licence (IIT Madras) we're confirming before
-  any weights go public. The training pack holds IndicTTS features, so it never goes to a public hub.
+- Confirmation from IIT Madras. The weights are released under CC BY 4.0, matching the
+  `SPRINGLab/IndicTTS_Tamil` mirror they were trained from, and keep IIT Madras's IndicTTS copyright
+  notice. IIT Madras's own licence permits free distribution of derivative works, but one clause on
+  resale is ambiguous. The training pack holds IndicTTS features, so it never goes to a public hub.
 - More voices and Tanglish speech in the training data.
 
 ## Licence
 
-Code: Apache 2.0 ([LICENSE](LICENSE)). PiVo's weights and code are Apache 2.0, and FARGAN is under the
-Xiph/Opus BSD licence; both are downloaded separately into `models/` and keep their own notices.
+Code: Apache 2.0 ([LICENSE](LICENSE)). Released Kuyil weights: CC BY 4.0 (each model's `NOTICE`).
+PiVo's weights and code are Apache 2.0, and FARGAN is under the Xiph/Opus BSD licence. Both are
+downloaded separately into `models/` and keep their own notices. A released folder carries an
+unchanged copy of PiVo's vocoder, with those notices, in `pivo/`. `release.py` builds the released folders.
 Contributing: [CONTRIBUTING.md](CONTRIBUTING.md).
