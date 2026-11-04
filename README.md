@@ -9,8 +9,9 @@ Part of [Zhagaram Labs](https://zhagaramlabs.com), a non-profit, Tamil-first ope
 repos: [uraikal](https://github.com/zhagaramlabs/uraikal) (the Tamil benchmark and text library Kuyil
 reads numbers with) and [oosai](https://github.com/zhagaramlabs/oosai) (the voice agent Kuyil is built for).
 
-**Status (2026-11-03):** steps 0–2 are built. The first size ladder (3 sizes × 3 seeds) is training on
-IndicTTS Tamil. No trained voice is released yet; see [What's not done](#whats-not-done).
+**Status (2026-11-04):** steps 0–2 are built. The first size ladder (3 sizes × 3 seeds) is trained on
+IndicTTS Tamil and scored: every size is as intelligible as the original recordings ([results](#step-3-listening-and-scoring)).
+Native listeners pick a size next. No trained voice is released yet; see [What's not done](#whats-not-done).
 
 ## Set up
 
